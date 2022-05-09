@@ -1,0 +1,67 @@
+* crear package.json
+npm init -y
+
+* configurar "scripts" en package.json, incluir:
+    "dev": "nodemon index",         || para ejecutar en desarrollo
+    "start": "node index.js"        || para subir a heroku
+
+* ejecutar servidor con nodemon:
+npm run dev
+
+====================================================================================
+====================================================================================
+====================================================================================
+
+
+// ====================================================================================
+// === crear nuestro primer servidor con los módulos que vienen por defecto en node ===
+// ====================================================================================
+// crear un servidor a mano | sin express
+
+// === llamar módulo http ===
+const http = require('http');
+
+// === configurar puerto ===
+const port = 5000;
+
+// === crear servidor ===
+// req -> petición/requerimiento del cliente
+// res -> respuesta del servidor | podemos responder con: json / html / texto plano / archivo 
+const server = http.createServer((req, res) => {
+    res.end('esta es la respuesta 🚀');
+});
+
+// === escuchar al servidor ===
+server.listen(port, () => console.log('funcionando 😍'));
+
+
+====================================================================================
+====================================================================================
+====================================================================================
+
+// ===============
+// === express ===
+// ===============
+// - infraestructura web rápida, minimalista y flexible para Node.js
+// - con miles de métodos de programa de utilidad HTTP y middleware a su disposición, 
+//      la creación de una API sólida es rápida y sencilla.
+// - express proporciona una delgada capa de características de aplicación web básicas, 
+//      que no ocultan las características de Node.js que tanto ama y conoce.
+
+* instalar paquete/dependencia de express:
+npm i express
+
+// ===============================================================
+// === middleware | use | páginas estáticas | carpeta 'public' ===
+// ===============================================================
+// - hay que ponerlos y configurarlos antes de las rutas!!!
+// - es algo que intercepta antes de que nosotros enviemos una respuesta.
+// - a través de nuestro middleware podemos decir: en vez de dar tal respuesta,
+//      primero verificamos algo y le mandamos la página en html.
+// - si trabajamos con rutas protegidas el middleware va a comprobar si el usuario
+//      existe, tiene las credenciales, me envió el token... etc; para aprobar o rechazar
+//      la solicitud a la ruta protegida.
+
+
+* instalar "express-generator":
+npm install express-generator -g
